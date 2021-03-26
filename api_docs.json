@@ -1,0 +1,167 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "World Cup API",
+    "description": "This is an API for the World Cup (2018) and Women's World Cup (2019) that outputs match data as JSON."
+  },
+  "tags": [
+    {
+      "name": "Men",
+      "description": "API for the World Cup (2018)"
+    },
+    {
+      "name": "Women",
+      "description": "API for the Women's World Cup (2019)"
+    }
+  ],
+  "paths": {
+    "/men/matches": {
+      "get": {
+        "summary": "Get all match data",
+        "tags": [
+          "Men"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    },
+    "/men/matches/country": {
+      "get": {
+        "summary": "Get matches for any country, by entering their FIFA Code",
+        "parameters": [
+          {
+            "name": "fifa_code",
+            "in": "query",
+            "description": "Filter matches by FIFA Code",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Men"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    },
+    "/men/teams": {
+      "get": {
+        "summary": "Get list of all teams in world cup, along with FIFA abbreviation",
+        "tags": [
+          "Men"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    },
+    "/men/teams/results": {
+      "get": {
+        "summary": "Get results for teams (wins, losses, draws, goals_for, goals_against)",
+        "tags": [
+          "Men"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    },
+    "/men/teams/group_results": {
+      "get": {
+        "summary": "Get results for teams by group, ordered by current group position",
+        "tags": [
+          "Men"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    },
+    "/women/matches": {
+      "get": {
+        "summary": "Get all match data",
+        "tags": [
+          "Women"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    },
+    "/women/matches/country": {
+      "get": {
+        "summary": "Get matches for any country, by entering their FIFA Code",
+        "parameters": [
+          {
+            "name": "fifa_code",
+            "in": "query",
+            "description": "Filter matches by FIFA Code",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Women"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    },
+    "/women/teams": {
+      "get": {
+        "summary": "Get list of all teams in world cup, along with FIFA abbreviation",
+        "tags": [
+          "Women"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    },
+    "/women/teams/results": {
+      "get": {
+        "summary": "Get results for teams (wins, losses, draws, goals_for, goals_against)",
+        "tags": [
+          "Women"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    },
+    "/women/teams/group_results": {
+      "get": {
+        "summary": "Get results for teams by group, ordered by current group position",
+        "tags": [
+          "Women"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    }
+  }
+}

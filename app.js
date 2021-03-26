@@ -1,16 +1,22 @@
-var createError = require('http-errors');
-var express = require('express');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const logger = require('morgan');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./api_docs.json');
 
-var rootRouter = require('./routes/index');
-var menRouter = require('./routes/men/index');
-var womenRouter = require('./routes/women/index');
+const rootRouter = require('./routes/index');
+const menRouter = require('./routes/men/index');
+const womenRouter = require('./routes/women/index');
 
-var app = express();
+const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// Use the following command for generating api_docs:
+// swagger-inline "./routes/**/*.js" --base "api_docs_base.json" > api_docs.json
+app.use('/api_docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use('/', rootRouter);
 app.use('/men', menRouter);

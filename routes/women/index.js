@@ -1,18 +1,34 @@
-var express = require('express');
-var fs = require('fs');
-var router = express.Router();
+const express = require('express');
+const fs = require('fs');
+const router = express.Router();
 
 const matches = JSON.parse(fs.readFileSync('routes/women/matches.json'));
 const teams = JSON.parse(fs.readFileSync('routes/women/teams.json'));
 const results = JSON.parse(fs.readFileSync('routes/women/results.json'));
 const group_results = JSON.parse(fs.readFileSync('routes/women/group_results.json'));
 
-// All match data
+/**
+ * @api [get] /women/matches
+ * summary: "Get all match data"
+ * tags: 
+ * - "Women"
+ */
 router.get('/matches', function(req, res) {
     res.json(matches);
 });
 
-// Matches for any country, by entering their FIFA Code
+/**
+ * @api [get] /women/matches/country
+ * summary: "Get matches for any country, by entering their FIFA Code"
+ * parameters:
+ * - name: "fifa_code"
+ *   in: "query"
+ *   description: "Filter matches by FIFA Code"
+ *   required: true
+ *   type: "string"
+ * tags: 
+ * - "Women"
+ */
 router.get('/matches/country', function(req, res) {
     const { fifa_code } = req.query;
     if (!fifa_code) {
@@ -29,17 +45,32 @@ router.get('/matches/country', function(req, res) {
     res.json(result);
 });
 
-// List of all teams in world cup, along with FIFA abbreviation
+/**
+ * @api [get] /women/teams
+ * summary: "Get list of all teams in world cup, along with FIFA abbreviation"
+ * tags: 
+ * - "Women"
+ */
 router.get('/teams', function(req, res) {
     res.json(teams);
 });
 
-// Results for teams (wins, losses, draws, goals_for, goals_against)
+/**
+ * @api [get] /women/teams/results
+ * summary: "Get results for teams (wins, losses, draws, goals_for, goals_against)"
+ * tags: 
+ * - "Women"
+ */
 router.get('/teams/results', function(req, res) {
     res.json(results);
 });
 
-// Results for teams by group, ordered by current group position
+/**
+ * @api [get] /women/teams/group_results
+ * summary: "Get results for teams by group, ordered by current group position"
+ * tags: 
+ * - "Women"
+ */
 router.get('/teams/group_results', function(req, res) {
     res.json(group_results);
 });

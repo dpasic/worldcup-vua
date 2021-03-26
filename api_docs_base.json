@@ -1,0 +1,16 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "World Cup API",
+    "description": "This is an API for the World Cup (2018) and Women's World Cup (2019) that outputs match data as JSON."
+  },
+  "tags": [{
+      "name": "Men",
+      "description": "API for the World Cup (2018)"
+    },
+    {
+      "name": "Women",
+      "description": "API for the Women's World Cup (2019)"
+    }
+  ]
+}

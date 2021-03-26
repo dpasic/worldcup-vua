@@ -1,8 +1,8 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 router.get('/', function(req, res) {
-    res.json({ status: 'OK' });
+    res.redirect('/api_docs');
 });
 
 module.exports = router;
