@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+    wc-app:
+          container_name: wc-app
+          build:
+              context: .
+              dockerfile: Dockerfile
+          restart: always
+          environment:
+            - PORT=3000
+          ports:
+              - "9000:3000"
+          volumes:
+              - .:/usr/src/app
+          entrypoint: nodemon -L ./bin/www && tail -f /dev/null
+
