@@ -1,8 +1,8 @@
 version: "3.8"
 
 services:
-    wc-frontend:
-          container_name: wc-frontend
+    wc-app:
+          container_name: wc-app
           build:
               context: .
               dockerfile: Dockerfile
